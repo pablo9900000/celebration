@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Wishes 🎉</title>
+
+<style>
+body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+    color:#333;
+
+    /* 🎨 Animated gradient */
+    background: linear-gradient(270deg, #ffdde1, #ee9ca7, #ffd1dc);
+    background-size: 600% 600%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* ✨ Sparkles */
+.sparkle {
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    opacity:0.7;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(0);}
+    to {transform: translateY(-100vh);}
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.7);
+    padding: 50px;
+    border-radius: 20px;
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+
+    opacity:0;
+    transform: translateY(30px);
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {opacity:1; transform: translateY(0);}
+}
+
+/* Title */
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #ff4b5c;
+    opacity:0;
+    animation: fadeText 1s forwards;
+    animation-delay: 0.5s;
+}
+
+/* Typing Text */
+#text {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    min-height: 100px;
+}
+
+/* Button */
+.btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    border:none;
+    border-radius: 25px;
+    background:#ff6f91;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+
+    opacity:0;
+    animation: fadeText 1s forwards;
+    animation-delay: 5s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeText {
+    to {opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🎂 Happy Birthday Pruthvi! 🎉</h1>
+
+    <p id="text"></p>
+
+    <a href="wishes.html">
+        <button class="btn">Continue ➡</button>
+    </a>
+</div>
+
+<script>
+// ✨ Sparkles generator
+for(let i=0;i<30;i++){
+    let s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    s.style.animationDuration=(3+Math.random()*4)+"s";
+    document.body.appendChild(s);
+}
+
+// ✍️ Typing effect
+let message = "Wishing you a day filled with happiness, laughter, and unforgettable moments. May this year bring you success, good health, and everything you dream of. You deserve all the joy in the world today and always! 💖";
+
+let i = 0;
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 30);
+    }
+}
+typeWriter();
+</script>
+
+</body>
+</html>
